@@ -42,7 +42,7 @@ module.exports = {
             _, 
             { 
                 registerInput: {username, email, password, confirmPassword}
-            },
+            }
             ){
                 const { valid, errors } = validateRegisterInput(username, email, password, confirmPassword)
                 if(!valid){
