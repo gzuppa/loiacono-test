@@ -24,10 +24,14 @@ module.exports = gql`
         email: String!
     }
     type Query {
-        getMission: [Mission]
+        getMissions: [Mission]
+        getMission(missionId: ID!): Mission
+        
     }
     type Mutation {
         register(registerInput: RegisterInput): User!
         login(username: String!, password: String!): User!
+        createMission(missionName: String!): Mission!
+        deleteMission(missionId: ID!): String!
     }
     `;
