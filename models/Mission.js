@@ -4,7 +4,7 @@ const missionSchema = new Schema({
     missionName: String,
     resultSuccess: Boolean,
     image: String,
-    date: Date,
+    date: String,
     wiki: String,
     about: String
 })
