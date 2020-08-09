@@ -2,7 +2,7 @@ const { model, Schema } = require('mongoose')
 
 const missionSchema = new Schema({
     missionName: String,
-    successResult: Boolean,
+    resultSuccess: Boolean,
     image: String,
     date: Date,
     wiki: String,

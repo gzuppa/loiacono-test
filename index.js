@@ -2,17 +2,35 @@ const { ApolloServer } = require('apollo-server')
 const gql = require('graphql-tag')
 const mongoose = require('mongoose')
 
+const Mission = require('./models/Mission')
+const Company = require('./models/Company')
 const { MONGODB } = require('./config.js')
 
 const typeDefs = gql`
-    type Query {
+    type Mission{
+        id: ID!
         missionName: String!
+        resultSuccess: Boolean!
+        image: String!
+        date: Date!
+        wiki: String!
+        about: String!
+    }
+    type Query {
+        getMission: [Mission]
     }
     `
 
 const resolvers = {
     Query: {
-        missionName: () => 'Starlink-9 (v1.0) & BlackSky Global 5-6'
+        async getMission(){
+            try{
+                const missions = await Mission.find()
+                return missions
+            } catch (err){
+                throw new Error(err)
+            }
+        }
     }
 }
 
