@@ -1,11 +1,14 @@
 import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
-import gql from 'graphql-tag'
 import { Grid } from 'semantic-ui-react'
 import MissionCard from '../components/MissionCard'
+import { FETCH_MISSIONS } from '../util/graphql'
 
 function Home() {
-    const { loading, data: { getMissions: missions } } = useQuery(FETCH_MISSIONS)
+    const {
+      loading,
+      data: { getMissions: missions }
+    } = useQuery(FETCH_MISSIONS);
   
     return(
         <Grid columns={3}>
@@ -26,19 +29,5 @@ function Home() {
         </Grid>
     )
 }
-
-const FETCH_MISSIONS = gql`
-    {
-        getMissions{
-        missionName 
-        resultSuccess
-        id
-        image
-        date
-        wiki
-        about
-        }
-    }
-`
 
 export default Home
