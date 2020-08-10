@@ -14,7 +14,8 @@ const server = new ApolloServer({
     context: ({req}) => ({req, pubsub})
 })
 
-mongoose.connect(MONGODB, {useNewUrlParser:true })
+mongoose
+    .connect(MONGODB, {useNewUrlParser:true })
     .then(() => {
         console.log('MongoDB for Rocket Launching is UP!')
         return server.listen({port: 5000}) 
@@ -22,3 +23,6 @@ mongoose.connect(MONGODB, {useNewUrlParser:true })
     .then(res => {
         console.log(`GraphQL-Apollo server is on Fire at ${res.url}!`)
     })
+    .catch(err => {
+        console.error(err)
+      })
