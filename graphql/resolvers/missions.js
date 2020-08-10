@@ -39,6 +39,9 @@ module.exports = {
                 about
             })
             const mission = await newMission.save()
+            context.pubsub.publish('NEW_MISSION',{
+                newMission: mission
+            })
             return mission
         },
         async deleteMission(_, { missionId }, context){
@@ -70,6 +73,11 @@ module.exports = {
                 await mission.save()
                 return mission
             } else throw new UserInputError('Mission not found')
+        }
+    },
+    Subscription:{
+        newMission: {
+            subscribe: (_, __, { pubsub }) => pubsub.asyncIterator('NEW_MISSION')
         }
     }
 }

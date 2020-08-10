@@ -11,6 +11,8 @@ module.exports = gql`
         about: String!
         comments: [Comment]!
         likes: [Like]!
+        likeCount: Int!
+        commentCount: Int!
     }
     type Comment{
         id: ID!
@@ -49,5 +51,8 @@ module.exports = gql`
         createComment(missionId: ID!, body: String!): Mission!
         deleteComment(missionId: ID!, commentId: ID!): Mission!
         likeMission(missionId: ID!): Mission!
+    }
+    type Subscription{
+        newMission: Mission!
     }
     `;
