@@ -1,6 +1,7 @@
 const missionResolvers = require('./missions')
 const companyResolvers = require('./companies')
 const usersResolvers = require('./users')
+const commentsResolvers = require('./comments')
 
 module.exports = {
     Query: {
@@ -8,6 +9,7 @@ module.exports = {
     },
     Mutation: {
         ...usersResolvers.Mutation,
-        ...missionResolvers.Mutation
+        ...missionResolvers.Mutation,
+        ...commentsResolvers.Mutation
     }
 }

@@ -46,5 +46,8 @@ module.exports = gql`
         login(username: String!, password: String!): User!
         createMission(missionName: String!): Mission!
         deleteMission(missionId: ID!): String!
+        createComment(missionId: ID!, body: String!): Mission!
+        deleteComment(missionId: ID!, commentId: ID!): Mission!
+        likeMission(missionId: ID!): Mission!
     }
     `;
